@@ -1,10 +1,15 @@
 #!/usr/bin/env python
+
+#usage: graphAvidaColumn.py <filename> <column>
+#produces a simple line graph of this column
+
+# Luis Zaman
+# 5/18
 import sys
 from numpy import array
 from matplotlib import pyplot
 import gzip
 
-#usage: graphAvidaColumn.py <filename> <column>
 filename = sys.argv[1]
 column = int(sys.argv[2])
 
