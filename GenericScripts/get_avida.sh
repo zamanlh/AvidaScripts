@@ -8,6 +8,7 @@ git submodule init
 git submodule update
 
 cd avida-core
+git checkout master
 git remote set-url origin --push gitolite@avida.devosoft.org:avida-core.git
 
 cd ../
