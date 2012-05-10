@@ -32,3 +32,15 @@ Showing how to graph multiple columns at one (0s cause problems with the y-axis 
 
 Producing `this figure
 <https://github.com/zamanlh/AvidaScripts/blob/master/GenericScripts/GraphColumns/examples/sample2.png>`_.
+
+
+Example phase space plot 
+************************
+::
+
+./graph_columns.py --data_file examples/parasite_phenotype_count.dat --x_label "Parasite Richness" --y_label "Parasite Shannon Diversity" --x_column 1 --columns 2 --grid --out_file sample3.png
+
+Producing `this figure
+<https://github.com/zamanlh/AvidaScripts/blob/master/GenericScripts/GraphColumns/examples/sample3.png>`_.
+
+
