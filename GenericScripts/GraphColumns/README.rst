@@ -18,7 +18,7 @@ Showing some basic functionality
 ********************************
 ::
 
-./graph_columns.py -data_file examples/parasite_phenotype_count.dat -xlabel Updates -ylabel "Shannon Diversity Index" -x 0 -columns 2
+./graph_columns.py --data_file examples/parasite_phenotype_count.dat --x_label Updates --y_label "Shannon Diversity Index" --x_column 0 --columns 2 --grid
  
 
 Producing `this figure
@@ -28,7 +28,7 @@ Showing how to graph multiple columns at one (0s cause problems with the y-axis 
 ***********************************************************************************************
 ::
 
-./graph_columns.py -data_file examples/parasite_tasks.dat -xlabel Updates -ylabel "Number of Organisms"  -x 0 -columns 1 2 3 -column_labels NOT NAND AND -logy
+./graph_columns.py --data_file examples/parasite_tasks.dat --x_label Updates --y_label "Number of Organisms"  --x_column 0 --columns 1 2 3 --column_labels "task NOT" "task NAND" "task AND" --log_y
 
 Producing `this figure
 <https://github.com/zamanlh/AvidaScripts/blob/master/GenericScripts/GraphColumns/examples/sample2.png>`_.
