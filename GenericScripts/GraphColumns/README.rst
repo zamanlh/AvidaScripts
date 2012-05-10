@@ -24,8 +24,8 @@ Showing some basic functionality
 Producing `this figure
 <https://github.com/zamanlh/AvidaScripts/blob/master/GenericScripts/GraphColumns/examples/sample1.png>`_.
 
-Showing how to graph multiple columns at one (0s cause problems with the y-axis on a log scale)
-***********************************************************************************************
+Showing how to graph multiple columns at one
+********************************************
 ::
 
 ./graph_columns.py --data_file examples/parasite_tasks.dat --x_label Updates --y_label "Number of Organisms"  --x_column 0 --columns 1 2 3 --column_labels "task NOT" "task NAND" "task AND" --log_x 
