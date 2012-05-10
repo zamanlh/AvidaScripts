@@ -14,7 +14,8 @@ parser = argparse.ArgumentParser(description="Plots one or more columns from a t
 #file to parse
 parser.add_argument('--data_file', type=argparse.FileType('r'), help="the filename containing space delimited values to be plotted", required=True)
 parser.add_argument('--x_column', type=int, help="Column to be used as the X values for the plot", required=True, nargs=1)
-#label for the x-axis
+
+#label for the axes
 parser.add_argument('--x_label', type=str, help="x-axis label, if you need spaces you can quote the string", required=False, default="x-axis", nargs=1)
 parser.add_argument('--y_label', type=str, help="y-axis label, if you need spaces you can quote the string", required=False, default="y-axis", nargs=1)
 
@@ -28,6 +29,8 @@ parser.add_argument('--log_x', help="Graph the x-axis on a log scale", required=
 parser.add_argument('--log_y', help="Graph the y-axis on a log scale", required=False, default=False, action='store_true')
 parser.add_argument('--grid', help="Use an axes grid", required=False, default=False, action='store_true')
 
+#save figure
+parser.add_argument('--out_file', help="Save the figure to this file, using the extension format", required=False, default=None)
 
 args = parser.parse_args()
 
@@ -56,4 +59,9 @@ if args.column_labels:
 pyplot.xlabel(args.x_label[0])
 pyplot.ylabel(args.y_label[0])
 
-pyplot.show()
+#save the figure if we are supposed to, otherwise try to display it
+if args.out_file:
+    pyplot.savefig(args.out_file)
+    print "\nSaved figure to {0}".format(args.out_file)
+else:
+    pyplot.show()
