@@ -5,7 +5,7 @@ graph_columns.py - Graph One or More Columns of Data
 :Created by:
     Luis Zaman <zamanlui@msu.edu>
 :Website:
-    https://github.com/AvidaScripts/GraphColumns
+    https://github.com/zamanlh/AvidaScripts/tree/master/GenericScripts/GraphColumns
 
 Example Usage
 =============
