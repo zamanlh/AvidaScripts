@@ -7,10 +7,23 @@ graph_columns.py - Graph One or More Columns of Data
 :Website:
     https://github.com/zamanlh/AvidaScripts/tree/master/GenericScripts/GraphColumns
 
+Prerequisites
+=============
+This script requires python 2.7 or greater, numpy, and matplotlib
+
 Example Usage
 =============
-Showing some basic functionality:
-``./graph_columns.py -data_file parasite_phenotype_count.dat -xlabel Updates -ylabel "Shannon Diversity Index" -x 0 -columns 2``
+
+Showing some basic functionality
+********************************
+``./graph_columns.py -data_file examples/parasite_phenotype_count.dat -xlabel Updates -ylabel "Shannon Diversity Index" -x 0 -columns 2``
+
+Producing `this figure
+<http://www.python.org/>`_.
 
 Showing how to graph multiple columns at one (0s cause problems with the y-axis on a log scale)
-``./graph_columns.py -data_file parasite_tasks.dat -xlabel Updates -ylabel "Number of Organisms" -x 0 -columns 1 2 3 -column_labels NOT NAND AND -logy``
+***********************************************************************************************
+``./graph_columns.py -data_file examples/parasite_tasks.dat -xlabel Updates -ylabel "Number of Organisms" -x 0 -columns 1 2 3 -column_labels NOT NAND AND -logy``
+
+Producing `this figure
+<http://www.python.org/>`_.
