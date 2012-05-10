@@ -56,6 +56,9 @@ def sample_infectivity(host_phenotypes, parasite_phenotypes, sample_size=100):
 
     return percent_infective
 
+def calculate_infectivity(host_phenotypes, parasite_phenotypes):
+    pass
+    
 
 class DataPoint():
     """Class that represents information to be sent to your 'compute' function"""
