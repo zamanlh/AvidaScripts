@@ -71,7 +71,7 @@ def calculate_resistance(treatment_name, treatment_num, host_update, parasite_up
         host_grid = get_grid("%s_%d/data/grid_task_hosts.%d.dat.gz"%(treatment_name, treatment_num, host_update))
         
     if os.path.isfile("%s_%d/data/grid_task_parasite.%d.dat.gz"%(treatment_name, treatment_num, parasite_update)):
-        parasite_grid = get_grid("%s_%d/data/grid_task_parasite.%d.dat.gz"%(treatment_name, treatment_num, update))
+        parasite_grid = get_grid("%s_%d/data/grid_task_parasite.%d.dat.gz"%(treatment_name, treatment_num, parasite_update))
         
     #LZ - use one of the functions from my grid script to get out only valid phenotypes, no 0s or -1s since those will mess up calculations
     for host_p in get_valid_phenotypes(host_grid):
