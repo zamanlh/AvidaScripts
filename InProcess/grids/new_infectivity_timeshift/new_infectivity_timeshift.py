@@ -6,7 +6,7 @@
 # Luis Zaman
 # 5/18
 import sys, gzip, csv, os.path
-from numpy import transpose, array, average, arange
+from numpy import transpose, array, average, arange, zeros
 from matplotlib import pyplot
 from scipy.stats import sem
 from collections import defaultdict
@@ -120,12 +120,18 @@ def get_avida_column(filename, column):
   
     return content_transposed[column]
     
-    
+update_range = range(0,100001,1000)
+matrix_data = list(zeros((len(update_range), len(update_range))))
+
 folder = "Para_1.00_4/data/"
-for i in range(0,100000,1000):
-    for j in range(0, 100000, 1000):
+for i in update_range:
+    for j in update_range:
         res = calculate_resistance("Para_1.00", 4, i, j)
-        print i,j,res
+        print i, j, res
+        matrix_data[i][j] = res
+        
+matshow(matrix_data, cmap=cm.gray)
+savefig("para1.0_4.pdf")
         
 
 
