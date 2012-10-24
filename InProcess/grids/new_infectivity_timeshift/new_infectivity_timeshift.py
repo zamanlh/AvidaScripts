@@ -120,7 +120,8 @@ def get_avida_column(filename, column):
   
     return content_transposed[column]
     
-update_range = range(0,100001,1000)
+interval=1000
+update_range = range(0,100001,interval)
 matrix_data = list(zeros((len(update_range), len(update_range))))
 
 folder = "Para_1.00_4/data/"
@@ -128,7 +129,7 @@ for i in update_range:
     for j in update_range:
         res = calculate_resistance("Para_1.00", 4, i, j)
         print i, j, res
-        matrix_data[i][j] = res
+        matrix_data[i/interval][j/interval] = res
         
 matshow(matrix_data, cmap=cm.gray)
 savefig("para1.0_4.pdf")
