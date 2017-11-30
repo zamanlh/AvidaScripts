@@ -1,10 +1,9 @@
-#!/usr/local/epd/bin/python
 import sys, gzip, random
 from collections import defaultdict
-from itertools import ifilter, repeat
+from itertools import repeat
 from scipy.stats import sem
 from numpy import array, vectorize, mean
-from ete2 import *
+from ete3 import *
 
 ORG_ID = 0
 ORG_SOURCE = 1
@@ -14,16 +13,17 @@ ORG_BORN = 11
 ORG_DIED = 12
 
 ORG_PHENOTYPE_ID = 0
-ORG_PHENOTYPE_BIN_STR = 2
+ORG_PHENOTYPE_BIN_STR = 1
 
-ABUNDANCE_THRESHOLD = 3
+ABUNDANCE_THRESHOLD = 15
 
 #detail file to do most of the work
-DETAIL_FILENAME = "detail-500000-para.spop"
+DETAIL_FILENAME = "detail-100000.spop"
 
 #for phenotype data, need some analyze mode data
 #set this = none to avoid trying to add in phenotype data
-PHENOTYPE_FILE = "phylo_file.dat"
+#PHENOTYPE_FILE = "phylo_file.dat"
+PHENOTYPE_FILE = "org_phenotypes.dat"
 
 
 #handle gzip files or non-gzip files
@@ -64,8 +64,8 @@ currentl_living_counts = defaultdict(int)
 below_threshold_orgs = []
 above_threshold_orgs = []
 parents = defaultdict(str)
-for i in xrange(len(org_id)):
-    if org_source[i].startswith("org:"):    
+for i in range(len(org_id)):
+    if org_source[i].startswith("div:"):    
         update_born[org_id[i]] = int(org_update_born[i])
         currentl_living_counts[org_id[i]] = int(org_currently_living[i])
     
@@ -77,10 +77,12 @@ for i in xrange(len(org_id)):
         
 #second pass required to do our own pruning, ETE's pruning is horrible
 new_children = defaultdict(list)
-for i in xrange(len(org_id)):
-    if len(children[org_id[i]]) == 0:
-        if currentl_living_counts[org_id[i]] > ABUNDANCE_THRESHOLD:
-            above_threshold_orgs.append(str(org_id[i]))
+for i in range(len(org_id)):
+#    if len(children[org_id[i]]) == 0:
+#        #and it has enough offspring...
+    if currentl_living_counts[org_id[i]] > ABUNDANCE_THRESHOLD:
+        #consider it one of the genotypes to keep
+        above_threshold_orgs.append(str(org_id[i]))
             
 #recursively add children map from the leaf nodes we want to include     
 def build_new_children(leaf_node):
@@ -110,7 +112,7 @@ def build_tree(tree_root, org_id):
         #decorate the leaf nodes with their phenotype map
         if PHENOTYPE_FILE:
             if len(new_children[c]) == 0:
-                p.add_face(SequenceFace(org_phenotype_dict[c], fsize=65, seqtype="aa", aafg={"0":"Grey", "1":"Grey"}, aabg={"0":"White", "1":"Black"}), column=0, position="aligned")
+                p.add_face(SequenceFace(org_phenotype_dict[c], fsize=65, seqtype="aa", fg_colors={"0":"Grey", "1":"Red"}, bg_colors={"0":"White", "1":"White"}), column=0, position="aligned")
             
         build_tree(p, c)
                     

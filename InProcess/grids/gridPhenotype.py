@@ -1,5 +1,3 @@
-#!/usr/local/epd/bin/python
-
 import sys, gzip, random
 from itertools import ifilter, repeat
 from scipy.stats import sem
