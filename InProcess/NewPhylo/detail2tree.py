@@ -25,6 +25,12 @@ def build_tree_recursive(current_bud_row, phylo_tree):
 		UpdateActivated=current_bud_row.UpdateActivated, 
 		UpdateDeactivated=current_bud_row.UpdateDeactivated)
 
+	if "UpdateActivated" in phylo_tree.features:
+		new_node.dist = new_node.UpdateActivated - phylo_tree.UpdateActivated
+	else:
+		#We're at the root node
+		new_node.dist = 0
+
 	cur_node_id = str(current_bud_row.OrgID)
 
 	for idx, new_row in saved_pop_hosts[saved_pop_hosts.ParentID.eq(cur_node_id)].iterrows():	
