@@ -25,6 +25,7 @@ def build_tree_recursive(current_bud_row, phylo_tree):
 		UpdateActivated=current_bud_row.UpdateActivated, 
 		UpdateDeactivated=current_bud_row.UpdateDeactivated)
 
+	#Add distance attributes to nodes based on when it was born
 	if "UpdateActivated" in phylo_tree.features:
 		new_node.dist = new_node.UpdateActivated - phylo_tree.UpdateActivated
 	else:
